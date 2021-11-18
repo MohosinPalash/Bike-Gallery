@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../contexts/AuthProvider/useAuth';
@@ -6,7 +6,7 @@ import useAuth from '../../../contexts/AuthProvider/useAuth';
 const Register = () => {
     const [loginData, setLoginData] = useState();
 
-    const { registerUser } = useAuth();
+    const { user, registerUser, isLoading, authError } = useAuth();
 
     const handleOnChange = e => {
         const field = e.target.name;
@@ -28,7 +28,7 @@ const Register = () => {
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
                     <Typography variant="body1" gutterBottom>LOGIN</Typography>
-                    <form onSubmit={handleLoginSubmit}>
+                    {!isLoading && <form onSubmit={handleLoginSubmit}>
                         <TextField
                             sx={{ width: '75%', m: 1 }}
                             id="standard-basic"
@@ -60,7 +60,10 @@ const Register = () => {
                         <NavLink style={{ textDecoration: "none" }} to="/login">
                             <Button variant="text">Already have an account? Login!</Button>
                         </NavLink>
-                    </form>
+                    </form>}
+                    {isLoading && <CircularProgress />}
+                    {user?.email && <Alert severity="success">Account created successfully!</Alert>}
+                    {authError && <Alert severity="error">{authError}</Alert>}
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <h1>Royal Enfield Image</h1>
