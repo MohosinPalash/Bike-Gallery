@@ -5,7 +5,7 @@ import useAuth from '../../../contexts/AuthProvider/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState();
-    const { user, loginUser, isLoading, authError } = useAuth();
+    const { user, loginUser, isLoading, signInWithGoogle, authError } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -23,6 +23,12 @@ const Login = () => {
         loginUser(loginData.email, loginData.password, location, history)
         e.preventDefault();
     }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history);
+
+    }
+
     return (
         <Container>
             <Grid container spacing={2}>
@@ -55,6 +61,8 @@ const Login = () => {
                         {user?.email && <Alert severity="success">Login successfully!</Alert>}
                         {authError && <Alert severity="error">{authError}</Alert>}
                     </form>
+                    <hr></hr>
+                    <Button onClick={handleGoogleSignIn} variant="contained">Sign In with GOOGLE</Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <h1>Royal Enfield Image</h1>
