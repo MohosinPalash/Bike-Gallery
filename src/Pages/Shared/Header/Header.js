@@ -5,6 +5,7 @@ import useAuth from '../../../contexts/AuthProvider/useAuth';
 // import logo from '../../../../src/images/basic/logo.png'
 const Header = () => {
     const { user, logout } = useAuth();
+    const { admin } = useAuth();
     console.log(user);
     return (
         <>
@@ -15,13 +16,26 @@ const Header = () => {
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text><Nav.Link as={Link} to="/home">Home</Nav.Link></Navbar.Text>
-                        <Navbar.Text><Nav.Link as={Link} to="/products">Collection</Nav.Link></Navbar.Text>
+                        <Navbar.Text><Nav.Link as={Link} to="/products">Products</Nav.Link></Navbar.Text>
+
 
                         {user?.email ?
                             <>
-                                <Navbar.Text><Nav.Link as={Link} to="/myOrder">My Order</Nav.Link></Navbar.Text>
-                                <Navbar.Text><Nav.Link as={Link} to="/manageOrder">Manage Order</Nav.Link></Navbar.Text>
-                                <Navbar.Text><Nav.Link as={Link} to="/addService">Add Service</Nav.Link></Navbar.Text>
+                                {
+                                    admin ?
+                                        <>
+                                            < Navbar.Text > <Nav.Link as={Link} to="/manageOrder">Manage Order</Nav.Link></Navbar.Text>
+                                            <Navbar.Text><Nav.Link as={Link} to="/addProduct">Add Product</Nav.Link></Navbar.Text>
+                                            <Navbar.Text><Nav.Link as={Link} to="/manageProduct">Manage Product</Nav.Link></Navbar.Text>
+                                            <Navbar.Text><Nav.Link as={Link} to="/makeAdmin">Make Admin</Nav.Link></Navbar.Text>
+                                        </>
+                                        :
+                                        <>
+                                            <Navbar.Text><Nav.Link as={Link} to="/myOrder">My Order</Nav.Link></Navbar.Text>
+                                            <Navbar.Text><Nav.Link as={Link} to="/sendReview">Send Review</Nav.Link></Navbar.Text>
+                                            <Navbar.Text><Nav.Link as={Link} to="/paymentGateway">Payment Gateway</Nav.Link></Navbar.Text>
+                                        </>}
+
                                 <Navbar.Text style={{ color: "white", cursor: "pointer" }} onClick={logout}>Logout</Navbar.Text>
                                 <Navbar.Text>
                                     <Nav.Link as={Link} to="/home" style={{ marginTop: "0" }}>Welcome USER
@@ -40,8 +54,8 @@ const Header = () => {
                             <Navbar.Text><Nav.Link as={Link} to="/login">Login</Nav.Link></Navbar.Text>}
 
                     </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                </Container >
+            </Navbar >
 
         </>
     );

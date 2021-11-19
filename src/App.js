@@ -10,6 +10,13 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import AddProduct from './Pages/PrivatePagesAdmin/AddProduct/AddProduct';
+import ManageProduct from './Pages/PrivatePagesAdmin/ManageProduct/ManageProduct';
+import ManageOrder from './Pages/PrivatePagesAdmin/ManageOrder/ManageOrder';
+import MakeAdmin from './Pages/PrivatePagesAdmin/MakeAdmin/MakeAdmin';
+import MyOrder from './Pages/PrivatePagesUser/MyOrder/MyOrder';
+import PaymentGateway from './Pages/PrivatePagesUser/PaymentGateway/PaymentGateway';
+import SendReview from './Pages/PrivatePagesUser/SendReview/SendReview';
 
 function App() {
   return (
@@ -27,12 +34,42 @@ function App() {
             <PrivateRoute exact path="/products">
               <Product></Product>
             </PrivateRoute>
+            <PrivateRoute exact path="/addProduct">
+              <AddProduct></AddProduct>
+            </PrivateRoute>
+            <PrivateRoute exact path="/manageProduct">
+              <ManageProduct></ManageProduct>
+            </PrivateRoute>
+            <PrivateRoute exact path="/manageOrder">
+              <ManageOrder></ManageOrder>
+            </PrivateRoute>
+            <PrivateRoute exact path="/makeAdmin">
+              <MakeAdmin></MakeAdmin>
+            </PrivateRoute>
+            <PrivateRoute exact path="/myOrder">
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute exact path="/paymentGateway">
+              <PaymentGateway></PaymentGateway>
+            </PrivateRoute>
+            <PrivateRoute exact path="/sendReview">
+              <SendReview></SendReview>
+            </PrivateRoute>
             <Route exact path="/login">
               <Login></Login>
             </Route>
             <Route exact path="/register">
               <Register></Register>
             </Route>
+            {/* <PrivateRoute exact path="/myOrder">
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute exact path="/review">
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute exact path="/pay">
+              <MyOrder></MyOrder>
+            </PrivateRoute> */}
             {/* <Route exact path="/transports">
               <Transports></Transports>
             </Route>

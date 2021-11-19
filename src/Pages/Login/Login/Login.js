@@ -40,6 +40,7 @@ const Login = () => {
                             id="standard-basic"
                             label="Email Address"
                             name="email"
+                            type="email"
                             onChange={handleOnChange}
                             variant="standard" />
                         <TextField

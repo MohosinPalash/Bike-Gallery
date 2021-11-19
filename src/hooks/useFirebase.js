@@ -7,6 +7,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
+    const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -16,6 +17,8 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
+                //send user to database
+                saveUser(email, name, 'POST');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 //send name to firebase after creation
@@ -52,7 +55,10 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
+                saveUser(user.email, user.displayName, 'PUT');
                 setAuthError('');
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
             }).catch((error) => {
                 setAuthError(error.message);
             })
@@ -73,6 +79,13 @@ const useFirebase = () => {
 
     }, [])
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+
+    }, [user.email])
+
     const logout = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
@@ -83,8 +96,21 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));;
     }
 
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
     return {
         user,
+        admin,
         isLoading,
         registerUser,
         loginUser,
