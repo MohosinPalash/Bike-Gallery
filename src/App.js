@@ -17,6 +17,7 @@ import MakeAdmin from './Pages/PrivatePagesAdmin/MakeAdmin/MakeAdmin';
 import MyOrder from './Pages/PrivatePagesUser/MyOrder/MyOrder';
 import PaymentGateway from './Pages/PrivatePagesUser/PaymentGateway/PaymentGateway';
 import SendReview from './Pages/PrivatePagesUser/SendReview/SendReview';
+import PlaceOrder from './Pages/PrivatePagesUser/PlaceOrder/PlaceOrder';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
             <Route exact path="/products">
               <Product></Product>
             </Route>
+            <PrivateRoute exact path="/placeOrder/:productId">
+              <PlaceOrder></PlaceOrder>
+            </PrivateRoute>
             <PrivateRoute exact path="/addProduct">
               <AddProduct></AddProduct>
             </PrivateRoute>
