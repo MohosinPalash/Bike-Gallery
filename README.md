@@ -1,6 +1,6 @@
 # BIKE GALLERY
 The website is a bike shop. This contains the dealership of ROYAL ENFIELD. our website Link-
-[Bike Gallery](https://tour-and-trip.web.app/)
+[Bike Gallery](https://bike-gallery-fc89a.web.app/)
 
 
 ## Features
@@ -14,7 +14,7 @@ In the project directory, there are a good number of features like-
 6. Admin and users have to join us by proper authentication.
 7. Someone may create his own profile along with GOOGLE authentication.
 
-Here, are the brief points of this project. To explore all features you must visit the following link. [Visit BIKE GALLERY](https://tour-and-trip.web.app/)
+Here, are the brief points of this project. To explore all features you must visit the following link. [Visit BIKE GALLERY](https://bike-gallery-fc89a.web.app/)
 
 ## Framework and languages
 1. HTML5, CSS3

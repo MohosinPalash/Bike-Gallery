@@ -13,7 +13,7 @@ const PlaceOrder = () => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${productId}`)
+        fetch(`https://infinite-badlands-08899.herokuapp.com/products/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data));
 
@@ -24,7 +24,7 @@ const PlaceOrder = () => {
         data.status = 'Pending';
         data.PID = productId;
         console.log('data', data);
-        axios.post('http://localhost:5000/orders', data)
+        axios.post('https://infinite-badlands-08899.herokuapp.com/orders', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Your Order is placed Successfully!');
