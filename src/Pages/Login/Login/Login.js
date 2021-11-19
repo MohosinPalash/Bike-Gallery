@@ -2,7 +2,8 @@ import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography
 import React, { useState } from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../contexts/AuthProvider/useAuth';
-
+import cover1 from '../../../images/cover1.png';
+import './Login.css'
 const Login = () => {
     const [loginData, setLoginData] = useState();
     const { user, loginUser, isLoading, signInWithGoogle, authError } = useAuth();
@@ -32,7 +33,7 @@ const Login = () => {
     return (
         <Container>
             <Grid container spacing={2}>
-                <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+                <Grid item sx={{ mt: 8 }} xs={12} md={6} className="login-box">
                     <Typography variant="body1" gutterBottom>LOGIN</Typography>
                     <form onSubmit={handleLoginSubmit}>
                         <TextField
@@ -66,7 +67,7 @@ const Login = () => {
                     <Button onClick={handleGoogleSignIn} variant="contained">Sign In with GOOGLE</Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <h1>Royal Enfield Image</h1>
+                    <img src={cover1} alt="" />
                 </Grid>
 
             </Grid>

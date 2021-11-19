@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../contexts/AuthProvider/useAuth';
-// import logo from '../../../../src/images/basic/logo.png'
+import logo from '../../../images/logo.png'
 const Header = () => {
     const { user, logout } = useAuth();
     const { admin } = useAuth();
@@ -11,8 +11,8 @@ const Header = () => {
         <>
             <Navbar sticky="top" bg="dark" variant="dark" collapseOnSelect expand="lg">
                 <Container>
-                    {/* <Navbar.Brand as={Link} to="/home" style={{ fontSize: "25px" }}><img style={{ height: "40px", width: "40px" }} src={logo} alt="" />BIKE GALLERY</Navbar.Brand> */}
-                    <Navbar.Brand as={Link} to="/home" style={{ fontSize: "25px" }}>BIKE GALLERY</Navbar.Brand>
+                    <Navbar.Brand as={Link} to="/home" style={{ fontSize: "25px" }}><img style={{ height: "40px", width: "80px" }} src={logo} alt="" /> BIKE GALLERY</Navbar.Brand>
+                    {/* <Navbar.Brand as={Link} to="/home" style={{ fontSize: "25px" }}>BIKE GALLERY</Navbar.Brand> */}
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text><Nav.Link as={Link} to="/home">Home</Nav.Link></Navbar.Text>
@@ -38,7 +38,7 @@ const Header = () => {
 
                                 <Navbar.Text style={{ color: "white", cursor: "pointer" }} onClick={logout}>Logout</Navbar.Text>
                                 <Navbar.Text>
-                                    <Nav.Link as={Link} to="/home" style={{ marginTop: "0" }}>Welcome {user?.displayName.split(" ")[0]}
+                                    <Nav.Link as={Link} to="/home" style={{ marginTop: "0" }}>Welcome {user?.displayName}
                                     </Nav.Link>
                                 </Navbar.Text>
                             </>

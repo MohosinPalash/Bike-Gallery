@@ -13,7 +13,7 @@ const SendReview = () => {
         data.email = user.email;
         data.name = user.displayName;
         console.log('data', data);
-        axios.post('http://localhost:5000/review', data)
+        axios.post('https://infinite-badlands-08899.herokuapp.com/review', data)
             .then(res => {
                 if (res.data.insertedId) {
                     reset();
